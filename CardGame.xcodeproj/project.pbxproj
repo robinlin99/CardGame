@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CAC703E259AB8BD00F469FC /* CardLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC703D259AB8BD00F469FC /* CardLogic.swift */; };
 		7CB7CFEA259AAAC3008186C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7CFE9259AAAC3008186C9 /* AppDelegate.swift */; };
 		7CB7CFEC259AAAC3008186C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7CFEB259AAAC3008186C9 /* SceneDelegate.swift */; };
 		7CB7CFEE259AAAC3008186C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7CFED259AAAC3008186C9 /* ContentView.swift */; };
 		7CB7CFF0259AAAC7008186C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB7CFEF259AAAC7008186C9 /* Assets.xcassets */; };
 		7CB7CFF3259AAAC7008186C9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB7CFF2259AAAC7008186C9 /* Preview Assets.xcassets */; };
 		7CB7CFF6259AAAC7008186C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CB7CFF4259AAAC7008186C9 /* LaunchScreen.storyboard */; };
+		7CB7CFFF259AAAE1008186C9 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB7CFFE259AAAE1008186C9 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7CAC703D259AB8BD00F469FC /* CardLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardLogic.swift; sourceTree = "<group>"; };
 		7CB7CFE6259AAAC3008186C9 /* CardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB7CFE9259AAAC3008186C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CB7CFEB259AAAC3008186C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		7CB7CFF2259AAAC7008186C9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7CB7CFF5259AAAC7008186C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CB7CFF7259AAAC7008186C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CB7CFFE259AAAE1008186C9 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				7CB7CFF4259AAAC7008186C9 /* LaunchScreen.storyboard */,
 				7CB7CFF7259AAAC7008186C9 /* Info.plist */,
 				7CB7CFF1259AAAC7008186C9 /* Preview Content */,
+				7CB7CFFE259AAAE1008186C9 /* Card.swift */,
+				7CAC703D259AB8BD00F469FC /* CardLogic.swift */,
 			);
 			path = CardGame;
 			sourceTree = "<group>";
@@ -146,8 +152,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CB7CFEA259AAAC3008186C9 /* AppDelegate.swift in Sources */,
+				7CAC703E259AB8BD00F469FC /* CardLogic.swift in Sources */,
 				7CB7CFEC259AAAC3008186C9 /* SceneDelegate.swift in Sources */,
 				7CB7CFEE259AAAC3008186C9 /* ContentView.swift in Sources */,
+				7CB7CFFF259AAAE1008186C9 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
