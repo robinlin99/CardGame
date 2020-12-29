@@ -7,25 +7,24 @@
 
 import SwiftUI
 
-struct Card: View {
-    @State var symbol: String
-    @State var color: Color
-    @State var matched: Bool
+struct CardView: View {
+    @ObservedObject var card: CardObj
+
     var body: some View {
-        // MARK: Unmatched State
-        if !matched {
+        // MARK: Facedown
+        if !card.faceUp {
             RoundedRectangle(cornerRadius: 25, style: .continuous)
                 .fill(Color.black)
                 .frame(width: 100, height: 150)
         }
         
-        // MARK: Matched State
+        // MARK: Faceup
         else {
             ZStack {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
-                    .fill(color)
+                    .fill(card.color)
                     .frame(width: 100, height: 150)
-                Text(symbol)
+                Text(card.symbol).font(.system(size: 50))
             }
         }
     }
@@ -33,6 +32,6 @@ struct Card: View {
 
 struct Card_Previews: PreviewProvider {
     static var previews: some View {
-        Card(symbol: "👻", color: Color.blue, matched: true)
+        CardView(card: CardObj(face: true, m: false, sym: "🍔" , c: Color.blue))
     }
 }

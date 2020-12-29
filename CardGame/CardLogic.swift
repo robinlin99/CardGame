@@ -8,25 +8,89 @@
 import Foundation
 import SwiftUI
 
-struct CardLogic {
-    var first: Int = 13
-    var second: Int = 14
-    var firstChosen: Bool = false
-    var secondChosen: Bool = false
-    // 1  2  3
-    // 4  5  6
-    // 7  8  9
-    // 10 11 12
-    // TODO: Pos - Index Hashmap
-    let hashmap = [1: [0,0], 2: [0,1], 3: [0,2]]
-    var symbols = (["😃", "🧘🏻‍♂️", "🌍", "🍞", "🚗", "📞"] as NSArray).shuffled() as! [String]
-    var colors = [Color.blue, Color.red, Color.green, Color.purple, Color.gray, Color.orange]
-    var cardState = [Any]()
-    //    var cardState = [["👻", Color.blue, true]]
-    // TODO: Initial Card Initialization
-    init() {
+class CardLogic : ObservableObject {
+    var firstCard: Int
+    var secondCard: Int
+    var firstChosenCard: Bool
+    var secondChosenCard: Bool
+    var symb : Array<String>
+    var col : Array<Color>
+    @Published var score : Int
+    @Published var cardState = [CardObj]()
+    init(first: Int, second: Int, firstChosen: Bool, secondChosen: Bool, symbols: Array<String>, colors: Array<Color>) {
+        firstCard = first
+        secondCard = second
+        firstChosenCard = firstChosen
+        secondChosenCard = secondChosen
+        symb = symbols
+        col = colors
+        score = 0
         for i in 0...5 {
-            cardState.append([symbols[i],colors[i],false])
+            cardState.append(CardObj(face: false, m: false, sym: symb[i], c: col[i]))
+            cardState.append(CardObj(face: false, m: false, sym: symb[i], c: col[i]))
+        }
+        cardState = (cardState as NSArray).shuffled() as! [CardObj]
+    }
+    
+    func reset(first: Int, second: Int, firstChosen: Bool, secondChosen: Bool, symbols: Array<String>, colors: Array<Color>) {
+        firstCard = first
+        secondCard = second
+        firstChosenCard = firstChosen
+        secondChosenCard = secondChosen
+        symb = symbols
+        col = colors
+        score = 0
+        cardState = [CardObj]()
+        for i in 0...5 {
+            cardState.append(CardObj(face: false, m: false, sym: symb[i], c: col[i]))
+            cardState.append(CardObj(face: false, m: false, sym: symb[i], c: col[i]))
+        }
+        cardState = (cardState as NSArray).shuffled() as! [CardObj]
+    }
+    
+    func chooseCard(index: Int) {
+        // Testing if cards flip upon selection
+        // cardState[index].faceUp = !cardState[index].faceUp
+        
+        // Only select if not matched
+        if !cardState[index].matched && !cardState[index].faceUp {
+            print("CARD IS NOT MATCHED")
+            // MARK: No Card Chosen
+            if !firstChosenCard && !secondChosenCard {
+                print("NO CARD CHOSEN")
+                firstChosenCard = true
+                firstCard = index
+                cardState[firstCard].faceUp = true
+            }
+            
+            // MARK: First Card Chosen
+            else if firstChosenCard && !secondChosenCard {
+                secondChosenCard = true
+                secondCard = index
+                cardState[secondCard].faceUp = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    if self.cardState[self.firstCard].symbol == self.cardState[self.secondCard].symbol {
+                        self.cardState[self.firstCard].matched = true
+                        self.cardState[self.secondCard].matched = true
+                        self.firstChosenCard = false
+                        self.secondChosenCard = false
+                        self.firstCard = -1
+                        self.secondCard = -1
+                        self.score += 1
+                    }
+                    else {
+                        self.cardState[self.firstCard].matched = false
+                        self.cardState[self.secondCard].matched = false
+                        self.cardState[self.firstCard].faceUp = false
+                        self.cardState[self.secondCard].faceUp = false
+                        self.firstChosenCard = false
+                        self.secondChosenCard = false
+                        self.firstCard = -1
+                        self.secondCard = -1
+                    }
+                    
+                }
+            }
         }
     }
 }
