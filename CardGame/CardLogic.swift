@@ -88,7 +88,6 @@ class CardLogic : ObservableObject {
                         self.firstCard = -1
                         self.secondCard = -1
                     }
-                    
                 }
             }
         }
