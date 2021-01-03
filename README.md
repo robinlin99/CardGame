@@ -2,5 +2,5 @@
 
 iOS Card Matching Memory Game. 
 
-![alt text](cardgame.png)
-![alt text](info.png)
+![alt text](cg1.png)
+![alt text](cg2.png)
